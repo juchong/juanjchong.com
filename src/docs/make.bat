@@ -9,8 +9,10 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
+set DOCS=../../docs
 
 if "%1" == "" goto help
+if "%1" == "github" goto github
 
 %SPHINXBUILD% >NUL 2>NUL
 if errorlevel 9009 (
@@ -30,6 +32,16 @@ goto end
 
 :help
 %SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+goto end
+
+
+:github
+rmdir /S /Q "%BUILDDIR%"
+%SPHINXBUILD% -M html %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+copy /Y "%BUILDDIR%/html" "%DOCS%"
+echo. 2>"%DOCS%/.nojekyll"
+goto end
+	
 
 :end
 popd

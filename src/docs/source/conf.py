@@ -17,9 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'juanjchong.com'
-copyright = '2020, Juan Chong'
-author = 'Juan Chong'
+project = 'Sphinx Pages'
+copyright = '2020, Arne Rantzen'
+author = 'Arne Rantzen'
+
+# The full version, including alpha/beta/rc tags
+release = '1.0'
 
 
 # -- General configuration ---------------------------------------------------
