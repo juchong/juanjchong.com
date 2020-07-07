@@ -1,10 +1,10 @@
-.. Sphinx Pages documentation master file, created by
-   sphinx-quickstart on Fri Jan 31 20:10:15 2020.
+.. juanjchong.com documentation master file, created by
+   sphinx-quickstart on Mon Jul  6 20:51:28 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Sphinx Pages's documentation!
-========================================
+Welcome to juanjchong.com's documentation!
+==========================================
 
 .. toctree::
    :maxdepth: 2
