@@ -1,0 +1,13 @@
+title: Juan's Project Notes
+description: A collection of notes, documents, and links for projects. 
+remote_theme: carlosperate/jekyll-theme-rtd
+
+# Theme settings:
+site_author: Juan Jose Chong
+repo_url: "https://github.com/juchong/juanjchong.com/"
+edit_on_github: true
+github_docs_folder: true
+sticky_navigation: true
+prev_next_buttons_location: bottom
+search_enabled: true
+hljs_style: github-gist
