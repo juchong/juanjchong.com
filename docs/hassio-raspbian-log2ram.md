@@ -143,7 +143,7 @@ Navigate to `/usr/share/hassio/homeassistant` and create a new directory for you
 sudo mkdir logs
 ```
 
-Add the text below to your `configuration.yaml` file using a text editor or the web interface. This command tells Home Assistant to write the SQLite database to the `logs/` folder in the Home Assistant configuration directory. **Note: This path is meant to be relative! Remember, Home Assistant is running in a Docker!**
+Add the text below to your `configuration.yaml` file using a text editor or the web interface. This command tells Home Assistant to write the SQLite database to the `logs/` folder in the Home Assistant configuration directory. **Note: This path is meant to be relative! Remember, Home Assistant is running in a Docker container!**
 
 ```yaml
 recorder:
