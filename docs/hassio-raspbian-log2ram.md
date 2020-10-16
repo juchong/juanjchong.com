@@ -6,15 +6,13 @@ nav_order: 2
 
 # Installing hass.io (Home Assistant + Supervisor) on Raspbian with log2ram
 
-
-
-Intro
+SD card wear caused by running Home Assistant on a Raspberry Pi seems to be a very commonly-debated topic on the Home Assistant forums. I've personally lost more than one SD card to excessive reads and writes, ultimately leading to system failure. To help mitigate the issue, I switched over to pushing log data to a remote database but found that Home Assistant becomes very unstable if the remote server becomes unavailable. This article documents the process of setting up a Raspberry Pi, Docker, log2ram, and Home Assistant (hass.io).
 
 ## Installing and Configuring the Raspberry-Pi-OS
 
 ### Installing Raspberry-Pi-OS
 
-The Raspberry Pi foundation documentation does a good job of describing how to flash an image to the SD card and getting your Pi up-and-running. You can find the official guide [here](https://www.raspberrypi.org/documentation/installation/installing-images/). You'll want to use the "Raspberry Pi OS (32-bit) Lite" image for this application [link](https://www.raspberrypi.org/downloads/raspberry-pi-os/). 
+The Raspberry Pi foundation documentation does a good job describing how to flash an image to the SD card and get your Pi up-and-running. You can find the official guide [here](https://www.raspberrypi.org/documentation/installation/installing-images/). You'll want to use the "Raspberry Pi OS (32-bit) Lite" image for this application [link](https://www.raspberrypi.org/downloads/raspberry-pi-os/). 
 
 I also recommend enabling ssh on your Raspberry Pi before booting it for the first time. You can do this by creating an empty file in the `BOOT`folder on your SD card. 
 
@@ -29,7 +27,7 @@ Once you've connected to the Pi (the default login information is: U:pi P:raspbe
 
 1. Select the first option (Change User Password) and set a new password.
 2. Select the fourth option (Localisation Options) and select `Change Time Zone`. Home Assistant needs to know your current time zone so that logs and other things behind-the-scenes work correctly.
-3. Feel free to adjust other settings as necessary. Once you're finished, select `Finish` and allow the Pi to reboot. 
+3. Feel free to adjust other settings as necessary. Once finished, select `Finish` and allow the Pi to reboot. 
 
 Once the Pi reboots, enter the following command to update the OS. 
 
@@ -86,7 +84,7 @@ Installing the hass.io supervisor outside of the installer provided by the Home 
 
 The Home Assistant development team provides an install script for setting up the supervisor (hass.io) on a system outside of the hass.io image. The script is hosted on the project site [here](https://github.com/home-assistant/supervised-installer). 
 
-A few dependencies need to be installed and a service needs to be disabled before you can run the script. Execute the commands below to get things set up.
+A few dependencies need to be installed, and a service needs to be disabled before you can run the script. Execute the commands below to get things set up.
 
 ```
 sudo -i
@@ -121,7 +119,7 @@ docker logs hassio_supervisor -f
 
 ## Installing and Configuring log2ram
 
-log2ram creates a mount point in RAM where applications can use to write log data instead of writing directly to the SD card. Data logged in RAM is then periodically copied to the SD card on a predetermined schedule. The log2ram [project](https://github.com/azlux/log2ram) is hosted on GitHub and has a short list of commands needed to get it installed. Once you've rebooted your Pi, edit the log2ram configuration file located at `etc/log2ram.conf`
+log2ram creates a mount point in RAM where applications can write log data instead of writing directly to the SD card. Data logged in RAM is then periodically copied to the SD card on a predetermined schedule. The log2ram [project](https://github.com/azlux/log2ram) is hosted on GitHub and has a list of commands needed to install it. Once you've rebooted your Pi, edit the log2ram configuration file located at `etc/log2ram.conf`
 
 I changed the default size and log location to what's shown below.
 
