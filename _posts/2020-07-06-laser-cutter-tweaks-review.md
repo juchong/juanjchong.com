@@ -13,7 +13,7 @@ tags:
 
 Amidst the COVID crisis, I decided to purchase a laser cutter to aid in manufacturing face shields and eventually speed up FRC prototyping (at least that's how I justified it to myself, anyway). At the time, many well-known laser brands were either out of stock or outside of my target budget, so I decided to take a risk on a laser purchased through Amazon. The [listing](https://www.amazon.com/Orion-Motor-Tech-Engraving-Compatible/dp/B088FPQ8GT) advertised this model as 80W and showed that I could have it shipped to my home in about two weeks.
 
-![Amazon Listing](//assets/images/laser-cutter-tweaks-review/laser_amazon.PNG)
+![Amazon Listing](/assets/images/laser-cutter-tweaks-review/laser_amazon.PNG)
 
 ## Shipping and Delivery
 
