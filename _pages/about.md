@@ -3,6 +3,10 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+My name is Juan Jose Chong, and I currently work at Analog Devices as an Applications Engineer with a focus on MEMS-based Inertial Measurement Units (IMUs). In this role, I work directly with customers to help them integrate and debug any mechanical or electrical concerns they may run into when using inertial sensors. My previous role as a Senior Product Engineer in the inertial sensing group allowed me to become an expert in calibrating, testing and implementing high-performance inertial measurement units (IMUs). 
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+In my free time, I volunteer with FIRST robotics by volunteering as a FIRST Technical Advisor (FTA) at events across the country (and sometimes internationally). I also work with a local robotics team FRC 900, The Zebracorns ([link](https://team900.org/)) where possible to help develop ROS-based robot code. 
+
+<figure>
+  <img src="/assets/images/n64/31052400_10106594171569278_5735696771019964416_o.jpg" alt="FIRST Houston Championship 2018"></a>
+</figure>
