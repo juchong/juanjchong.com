@@ -8,5 +8,6 @@ My name is Juan Jose Chong, and I currently work at Analog Devices as an Applica
 In my free time, I volunteer with FIRST robotics by volunteering as a FIRST Technical Advisor (FTA) at events across the country (and sometimes internationally). I also work with a local robotics team FRC 900, The Zebracorns ([link](https://team900.org/)) where possible to help develop ROS-based robot code. 
 
 <figure>
-  <img src="/assets/images/n64/31052400_10106594171569278_5735696771019964416_o.jpg" alt="FIRST Houston Championship 2018"></a>
+  <img src="/assets/images/n64/31052400_10106594171569278_5735696771019964416_o.jpg" alt="FIRST Houston Championship 2018">
 </figure>
+
