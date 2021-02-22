@@ -18,7 +18,9 @@ For several years I've watched the speedrunning community participate in a bi-ye
 Today was spent trying to wrap my head around the many aspects, headaches, and limitations of replaying TASs on the N64 console. N64 console emulation has not matured to a point where the emulator reliably mimics the Reality Signal Processor (RSP), leading to many "de-syncs." Very few games can be replayed reliably (Super Mario 64, MarioKart 64) on actual N64 hardware. 
 I spent most of today chasing down "red herrings" and probing around the digital video signals, exposed the JTAG lines onto pins, and probed a few unused pins available on the N64 CPU. Additional information on the digital signals and protocol used for generating analog RGB signals can be found [here](http://members.optusnet.com.au/eviltim/n64rgb/n64rgb.html). Information about the N64 CPU can be found [here](http://en64.shoutwiki.com/wiki/N64_CPU). The table below seemed very interesting when paired with the N64 schematic (shown below). I specifically wanted to know whether the "unused" signals worked on the customized NEC CPU. 
 
-{% include figure image_path="/assets/images/n64/nes_cpu_table.png" alt="N64 CPU Table" %}
+<figure>
+  <img src="/assets/images/n64/nes_cpu_table.png" alt="N64 CPU Table">
+</figure>
 
 {% include figure image_path="/assets/images/n64/unused_n64_signals.PNG" alt="N64 CPU Pins" %}
 
