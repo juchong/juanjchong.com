@@ -19,29 +19,43 @@ Today was spent trying to wrap my head around the many aspects, headaches, and l
 I spent most of today chasing down "red herrings" and probing around the digital video signals, exposed the JTAG lines onto pins, and probed a few unused pins available on the N64 CPU. Additional information on the digital signals and protocol used for generating analog RGB signals can be found [here](http://members.optusnet.com.au/eviltim/n64rgb/n64rgb.html). Information about the N64 CPU can be found [here](http://en64.shoutwiki.com/wiki/N64_CPU). The table below seemed very interesting when paired with the N64 schematic (shown below). I specifically wanted to know whether the "unused" signals worked on the customized NEC CPU. 
 
 <figure>
-  <img src="/assets/images/n64/nes_cpu_table.png" alt="N64 CPU Table">
+  <a href="/assets/images/n64/nes_cpu_table.png"><img src="/assets/images/n64/nes_cpu_table.png" alt="N64 CPU Table">
 </figure>
 
-{% include figure image_path="/assets/images/n64/unused_n64_signals.PNG" alt="N64 CPU Pins" %}
+<figure>
+  <a href="/assets/images/n64/unused_n64_signals.PNG"><img src="/assets/images/n64/unused_n64_signals.PNG" alt="N64 CPU Pins">
+</figure>
 
 The !PMaster signal on the CPU appears to correlate nicely with when the controller inputs are polled. It's interesting to point out that when the N64 is taxed, there's a possibility that the RSP and RDP (Reality Display Processor) may "drop frames." When this behavior occurs, player inputs are ignored, and the RDP re-transmits the last video signal instead of a newly rendered frame. I believe that the key to managing the de-sync events on the N64 is to monitor for this behavior and use that information to determine whether joystick inputs should be repeated. 
 
 This image shows the controller and CPU signals recorded in Donkey Kong 64 while standing still. 
 
-{% include figure image_path="/assets/images/n64/sitting_idle.png" alt="DK64 Sitting Idle" %}
+<figure>
+  <a href="/assets/images/n64/sitting_idle.png"><img src="/assets/images/n64/sitting_idle.png" alt="DK64 Sitting Idle">
+</figure>
 
 This image shows how much the controller polling time changes depending on CPU load.
 
-{% include figure image_path="/assets/images/n64/messy_timing.png" alt="DK64 Messy Timing" %}
+<figure>
+  <a href="/assets/images/n64/messy_timing.png"><img src="/assets/images/n64/messy_timing.png" alt="DK64 Messy Timing">
+</figure>
 
 Finally, this image shows the same signals recorded in Donkey Kong 64 while rotating the player camera. While moving around, I noticed that the N64 video "skipped" (dropped frames). This logic analyzer capture also clearly shows that the N64 RSP requested the controller inputs during a window where the CPU was not ready. Maybe I can use this information to determine whether the next frame will be dropped? Regardless, this image shows how unstable the controller data acquisition process becomes when the CPU/RDP becomes taxed. 
 
-{% include figure image_path="/assets/images/n64/cpu_busy_snip.png" alt="N64 CPU When Busy" %}
+<figure>
+  <a href="/assets/images/n64/cpu_busy_snip.png"><img src="/assets/images/n64/cpu_busy_snip.png" alt="N64 CPU When Busy">
+</figure>
 
 Here are a few pictures of the N64's current state now that I've added test points. 
 
-{% include figure image_path="/assets/images/n64/21-02-21 23-31-33 7169-min.jpg" alt="N64 Motherboard" %}
+<figure>
+  <a href="/assets/images/n64/21-02-21 23-31-33 7169-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-33 7169-min.jpg" alt="N64 Motherboard">
+</figure>
 
-{% include figure image_path="/assets/images/n64/21-02-21 23-31-39 7170-min.jpg" alt="N64 Video Processing Test Points" %}
+<figure>
+  <a href="/assets/images/n64/21-02-21 23-31-39 7170-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-39 7170-min.jpg" alt="N64 Video Processing Test Points">
+</figure>
 
-{% include figure image_path="/assets/images/n64/21-02-21 23-31-46 7171-min.jpg" alt="N64 JTAG and Other Test Points" %}
+<figure>
+  <a href="assets/images/n64/21-02-21 23-31-46 7171-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-46 7171-min.jpg" alt="N64 JTAG and Other Test Points">
+</figure>
