@@ -55,7 +55,7 @@ Here are a few pictures of the N64's current state now that I've added test poin
 <figure>
   <a href="/assets/images/n64/21-02-21 23-31-39 7170-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-39 7170-min.jpg" alt="N64 Video Processing Test Points"></a>
 </figure>
-
 <figure>
-  <a href="assets/images/n64/21-02-21 23-31-46 7171-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-46 7171-min.jpg" alt="N64 JTAG and Other Test Points"></a>
+  <a href="/assets/images/n64/21-02-21 23-31-46 7171-min.jpg"><img src="/assets/images/n64/21-02-21 23-31-46 7171-min.jpg" alt="N64 JTAG and Other Test Points"></a>
 </figure>
+
