@@ -13,6 +13,49 @@ tags:
 
 For several years I've watched the speedrunning community participate in a bi-yearly event called [Games Done Quick](https://gamesdonequick.com/). This showcase/telethon works to collect as many donations as possible during a week-long videogame speedrunning marathon. One segment that caught my eye was the [Tool-Assisted Speedruns (TAS)](http://tasvideos.org/). These speedruns focus on "scripting" a series of button presses in an emulated environment (an emulator) to beat (and sometimes break) video games. A further extension of this subset of the speedrunning community involves replaying" pre-programmed scripts (thus the "tool" portion) on real hardware. I've been putting off reaching out to the community for a few years, but I finally decided to reach out this year. What follows are my observations, learnings, and other notes from working to improve TAS reliability on the N64 console.
 
+## 03/07/2021
+
+I decided to broaden my "research" scope after speaking with a few folks on the TASbot Discord [link](https://discord.com/invite/CwnDTug). Instead of focusing on finding a hardware indicator to help identify when a new video frame is produced, I'm working to improve the hardware debugging capabilities of the N64 community. A few members mentioned that getting the JTAG port on the custom NEC CPU to function would be valuable, so I focused on getting that working this week. 
+
+My first move was to figure out whether the JTAG port worked out of the box. Last week I added test points and lifted pins as necessary to allow the JTAG pins to be driven as necessary. I then used the resources listed on Wrongbaud's JTAG hacking guide [link](https://wrongbaud.github.io/posts/jtag-hdd/) to try and get the N64's CPU to respond to JTAG commands. I discovered that the CPU appears to be halting once the JTAG probing process starts, indicating that the pins appear not to be disabled! After carefully probing each of the pins with an oscilloscope, I discovered that the TDO pin appears not to be outputting any meaningful data, even when valid JTAG commands are transmitted. 
+
+After staring at the N64 schematic [link](https://console5.com/techwiki/images/a/a2/N64_NUS-CPU-03.pdf) for a bit, I realized that the ColdReset pin on the CPU (Pin 110) is also connected to the Reality Coprocessor (RCP), presumably to allow the coprocessor to trigger a soft reset of the CPU. I theorized that the RCP might be using that pin to detect when the CPU is reset (think of it as if it were acting as a watchdog), so I decided to sever the connection after the N64 booted using a simple switch and a pull-up resistor. 
+
+<figure>
+  <a href="/assets/images/n64/21-03-07 00-53-16 7292.jpg"><img src="/assets/images/n64/21-03-07 00-53-16 7292.jpg" alt="Switch to disable ColdReset"></a>
+</figure>
+
+This test produced interesting results since it proved that the RCP was happy to continue operating (drawing the same frame) even though the CPU was no longer sending it any data. 
+
+Next, I tried watching TDO on my oscilloscope to see whether the pin ever showed any meaningful signal. My concern, at this point, was that Nintendo might have chosen to permanently disable the pin in their production (consumer) units. The pin appeared never to be toggled during regular operation. However, I was able to observe *something* happening on the pin during boot. 
+
+<figure>
+  <a href="/assets/images/n64/image_pre_opamp.png"><img src="/assets/images/n64/image_pre_opamp.png" alt="TDO Signal Before Buffering"></a>
+</figure>
+
+The capture shown above prompted me to measure the resistance to VDD and GND on several pins I knew to be operating as "outputs." After doing so, I discovered that the TDO pin had a similar resistance to VDD as other output pins (~52kohm), but it had a higher resistance to GND (1.92Mohm vs. 58kohm). While these measurements don't mean much due to how typical CMOS output drivers are designed, they were enough to prove a few things:
+
+1. The pin was bonded out (a bond wire was placed between the ASIC and the package pin) at the factory.
+2. This pin was designed slightly differently than the rest of the output pins. 
+
+After taking a few days to reflect on what I had learned, I still couldn't shake the idea that the pin *was doing something at boot.* That's when I had this idea: "what if the output transistors were purposely handicapped to discourage people from probing them?"
+
+Using the image above as a starting point, I quickly calculated that a simple non-inverting OpAmp circuit with a gain of 15 should be enough to boost the weakened signal to something usable by external hardware. I set to work dead-bugging the circuit, and after some soldering, ended up with the circuit shown in the images below. 
+
+<figure>
+  <a href="/assets/images/n64/21-03-07 00-53-08 7291.jpg"><img src="/assets/images/n64/21-03-07 00-53-08 7291.jpg" alt="Dead-Bugged OpAmp Circuit"></a>
+</figure>
+
+Once I verified that things looked good with a test signal, I turned on the N64 and discovered this:
+
+<figure>
+  <a href="/assets/images/n64/image_post_opamp.png"><img src="/assets/images/n64/image_post_opamp.png" alt="TDO Signal After Buffering"></a>
+</figure>
+
+It looks like I'm now able to discern usable signals from the handicapped TDO port! Unfortunately, I couldn't get the JTAG port, but regardless, this is excellent progress! 
+
+Another member of the TASbot community pointed me to a [website](https://ultra64.ca/gallery/kyoto-microcomputer-co-ltd-k%c2%b5c/) listing several N64 developer consoles and hardware, so my next move is to try implementing some of those modifications on my N64.
+
 ## 02/22/2021
 
 Today was spent trying to wrap my head around the many aspects, headaches, and limitations of replaying TASs on the N64 console. N64 console emulation has not matured to a point where the emulator reliably mimics the Reality Signal Processor (RSP), leading to many "de-syncs." Very few games can be replayed reliably (Super Mario 64, MarioKart 64) on actual N64 hardware. 
