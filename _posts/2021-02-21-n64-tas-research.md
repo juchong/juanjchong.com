@@ -26,15 +26,10 @@ Once I tweaked the OpenOCD configuration a bit, I successfully read the expected
 My OpenOCD configuration is hosted [here](https://github.com/juchong/openocd_n64).
 
 
-While playing with the JTAG port and configuration a bit, I realized that the N64 would sometimes refuse to start even though seemingly nothing had changed. After a bit of probing with my oscilloscope, I discovered that the JTAG lines would start floating when my debugger released (high-z) the pins. I quickly fixed this issue by adding 10k pull-down resistors to each of the JTAG pins. I also noticed that the OpAmp I used (an LM741) couldn't swing the output from rail-to-rail, so I replaced it with an OPA344 I had leftover from another project. This OpAmp should be good to at least 1MHz or so. 
+While playing with the JTAG port and configuration a bit, I realized that the N64 would sometimes refuse to start even though seemingly nothing had changed. After a bit of probing with my oscilloscope, I discovered that the JTAG lines would start floating when my debugger released (high-z) the pins. I quickly fixed this issue by adding 10k pull-down resistors to each of the JTAG pins. 
 
-The dead-bug prototype circuit looks like this:
 
-<figure>
-  <a href="/assets/images/n64/21-03-10 21-55-39 7350.jpg"><img src="/assets/images/n64/21-03-10 21-55-39 7350.jpg" alt="Dead-Bug N64 JTAG Interface"></a>
-</figure>
-
-I've put together a diagram that should help anyone set up JTAG on their retail N64. Check it out below! 
+I've put together a diagram that should help anyone set up JTAG on their retail N64. It's worth pointing out that once I selected the correct JTCK pin, I discovered that the OpAmp was no longer necessary! 
 
 <figure>
   <a href="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG"><img src="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG" alt="Retail N64 JTAG Interface Schematic"></a>
