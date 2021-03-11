@@ -13,6 +13,33 @@ tags:
 
 For several years I've watched the speedrunning community participate in a bi-yearly event called [Games Done Quick](https://gamesdonequick.com/). This showcase/telethon works to collect as many donations as possible during a week-long videogame speedrunning marathon. One segment that caught my eye was the [Tool-Assisted Speedruns (TAS)](http://tasvideos.org/). These speedruns focus on "scripting" a series of button presses in an emulated environment (an emulator) to beat (and sometimes break) video games. A further extension of this subset of the speedrunning community involves replaying" pre-programmed scripts (thus the "tool" portion) on real hardware. I've been putting off reaching out to the community for a few years, but I finally decided to reach out this year. What follows are my observations, learnings, and other notes from working to improve TAS reliability on the N64 console.
 
+## 03/10/2021
+
+Over the weekend I reached out to several N64 modding communities in hopes that someone had previously attempted to get JTAG working on a console. One of the members pointed out that the NEC processor pinout was slightly customized in the final (production) N64 CPU design, which led me to discover that JTCK and INT1 pins were swapped compared to the commercial VR4300 CPU pinout. After lifting the necessary pin and moving over the jumper wire, I fired up OpenOCD and probed the JTAG port. 
+
+Once I tweaked the OpenOCD configuration a bit, I successfully read the expected `ircapture` response from the JTAG port! Here's what OpenOCD and GDB look like after successfully connecting to the N64.
+
+<figure>
+  <a href="/assets/images/n64/openocd_gdb_ubuntu.png"><img src="/assets/images/n64/openocd_gdb_ubuntu.png" alt="OpenOCD Successfully Connecting to the N64 CPU!"></a>
+</figure>
+
+My OpenOCD configuration is hosted [here](https://github.com/juchong/openocd_n64).
+
+
+While playing with the JTAG port and configuration a bit, I realized that the N64 would sometimes refuse to start even though seemingly nothing had changed. After a bit of probing with my oscilloscope, I discovered that the JTAG lines would start floating when my debugger released (high-z) the pins. I quickly fixed this issue by adding 10k pull-down resistors to each of the JTAG pins. I also noticed that the OpAmp I used (an LM741) couldn't swing the output from rail-to-rail, so I replaced it with an OPA344 I had leftover from another project. This OpAmp should be good to at least 1MHz or so. 
+
+The dead-bug prototype circuit looks like this:
+
+<figure>
+  <a href="/assets/images/n64/21-03-10 21-55-39 7350.jpg"><img src="/assets/images/n64/21-03-10 21-55-39 7350.jpg" alt="Dead-Bug N64 JTAG Interface"></a>
+</figure>
+
+I've put together a diagram that should help anyone set up JTAG on their retail N64. Check it out below! 
+
+<figure>
+  <a href="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG"><img src="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG" alt="Retail N64 JTAG Interface Schematic"></a>
+</figure>
+
 ## 03/07/2021
 
 I decided to broaden my "research" scope after speaking with a few folks on the TASbot Discord [link](https://discord.com/invite/CwnDTug). Instead of focusing on finding a hardware indicator to help identify when a new video frame is produced, I'm working to improve the hardware debugging capabilities of the N64 community. A few members mentioned that getting the JTAG port on the custom NEC CPU to function would be valuable, so I focused on getting that working this week. 
@@ -22,8 +49,9 @@ My first move was to figure out whether the JTAG port worked out of the box. Las
 After staring at the N64 schematic [link](https://console5.com/techwiki/images/a/a2/N64_NUS-CPU-03.pdf) for a bit, I realized that the ColdReset pin on the CPU (Pin 110) is also connected to the Reality Coprocessor (RCP), presumably to allow the coprocessor to trigger a soft reset of the CPU. I theorized that the RCP might be using that pin to detect when the CPU is reset (think of it as if it were acting as a watchdog), so I decided to sever the connection after the N64 booted using a simple switch and a pull-up resistor. 
 
 <figure>
-  <a href="/assets/images/n64/21-03-07 00-53-16 7292.jpg"><img src="/assets/images/n64/21-03-07 00-53-16 7292.jpg" alt="Switch to disable ColdReset"></a>
+  <a href="/assets/images/n64/21-03-07 00-53-16 7292.jpg"><img src="/assets/images/n64/21-03-07 00-53-16 7292.jpg" alt="Switch to Disable ColdReset"></a>
 </figure>
+
 
 This test produced interesting results since it proved that the RCP was happy to continue operating (drawing the same frame) even though the CPU was no longer sending it any data. 
 
