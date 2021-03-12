@@ -34,6 +34,8 @@ I've put together a diagram that should help anyone set up JTAG on their retail 
 <figure>
   <a href="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG"><img src="/assets/images/n64/N64_JTAG_JuanC_RevA.JPG" alt="Retail N64 JTAG Interface Schematic"></a>
 </figure>
+I'm still trying to wrap my head around how OpenOCD works, but if anyone with more experience would like to jump in and help, please reach out! 
+
 
 ## 03/07/2021
 
