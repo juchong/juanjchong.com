@@ -39,3 +39,4 @@ Finally, the driver can be re-loaded by issuing the following command:
 sudo modprobe -r ath10k_pci && sudo modprobe ath10k_pci
 ```
 
+The updated firmware should automatically load every time the kernel calls the N1535 driver. 
