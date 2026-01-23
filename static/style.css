@@ -1,0 +1,163 @@
+/* Mellow Terminal Theme - Softer, warmer color palette */
+
+:root {
+  --background: #1a1b26;
+  --foreground: #c0caf5;
+  --accent: #e0af68;
+  --accent-secondary: #bb9af7;
+  --selection: #33467c;
+  --border: #3b4261;
+  --code-bg: #24283b;
+  --muted: #565f89;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Logo/Brand */
+.logo a {
+  color: var(--accent);
+}
+
+.logo a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Menu */
+.menu {
+  border-color: var(--border);
+}
+
+.menu a {
+  color: var(--foreground);
+}
+
+.menu a:hover {
+  color: var(--accent);
+}
+
+/* Buttons */
+.button {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Post list */
+.post .post-title a {
+  color: var(--foreground);
+}
+
+.post .post-title a:hover {
+  color: var(--accent);
+}
+
+.post .post-meta {
+  color: var(--muted);
+}
+
+/* Tags */
+.post .post-tags a {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.post .post-tags a:hover {
+  background: var(--accent-secondary);
+  color: var(--background);
+}
+
+/* Code blocks */
+code {
+  background: var(--code-bg);
+  color: var(--accent);
+}
+
+pre {
+  background: var(--code-bg);
+  border-color: var(--border);
+}
+
+pre code {
+  color: var(--foreground);
+}
+
+/* Selection */
+::selection {
+  background: var(--selection);
+  color: var(--foreground);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left-color: var(--accent);
+  color: var(--muted);
+}
+
+/* Horizontal rules */
+hr {
+  border-color: var(--border);
+}
+
+/* Footer */
+.footer {
+  color: var(--muted);
+}
+
+.footer a {
+  color: var(--accent);
+}
+
+/* Pagination */
+.pagination a {
+  color: var(--accent);
+}
+
+.pagination a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Table of Contents */
+.toc {
+  border-color: var(--border);
+  background: var(--code-bg);
+}
+
+.toc a {
+  color: var(--muted);
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+/* Framer for images */
+.post-content img {
+  border-radius: 4px;
+}
+
+/* Reading time & post meta */
+.reading-time {
+  color: var(--muted);
+}
