@@ -1,6 +1,6 @@
 baseURL: "https://juanjchong.com"
 languageCode: "en-us"
-title: "Juan's Blog"
+title: "Juan Chong"
 theme: hugo-profile
 
 outputs:
@@ -22,16 +22,30 @@ markup:
     renderer:
       unsafe: true
 
+Menus:
+  main:
+    - identifier: blog
+      name: Blog
+      title: Blog posts
+      url: /blogs
+      weight: 1
+    - identifier: projects
+      name: Projects
+      title: Projects
+      url: /#projects
+      weight: 2
+
 params:
-  title: "Juan's Blog"
+  title: "Juan Chong"
   description: "Measure the planet! The personal website of Juan Chong, an Applications Engineer at Analog Devices specializing in IMUs, MEMS inertial sensors, and robotics."
   favicon: "/images/profile.jpg"
-  
+
   useBootstrapCDN: false
+  mathjax: false
   animate: true
 
   theme:
-    defaultTheme: "light"
+    defaultTheme: "dark"
     disableThemeToggle: false
 
   font:
@@ -40,6 +54,41 @@ params:
     lineHeight: 1.5
     textAlign: left
 
+  # Custom color scheme - Engineering/Tech aesthetic
+  color:
+    textColor: "#E8E8E8"
+    secondaryTextColor: "#A0A0A0"
+    textLinkColor: "#64FFDA"
+    backgroundColor: "#0A192F"
+    secondaryBackgroundColor: "#112240"
+    primaryColor: "#64FFDA"
+    secondaryColor: "#1D3557"
+
+    darkmode:
+      textColor: "#E8E8E8"
+      secondaryTextColor: "#A0A0A0"
+      textLinkColor: "#64FFDA"
+      backgroundColor: "#0A192F"
+      secondaryBackgroundColor: "#112240"
+      primaryColor: "#64FFDA"
+      secondaryColor: "#1D3557"
+
+  navbar:
+    align: ms-auto
+    brandName: "Juan Chong"
+    disableSearch: false
+    stickyNavBar:
+      enable: true
+      showOnScrollUp: true
+    enableSeparator: false
+    menus:
+      disableAbout: false
+      disableExperience: true
+      disableEducation: true
+      disableProjects: false
+      disableAchievements: true
+      disableContact: false
+
   hero:
     enable: true
     intro: "Hi, my name is"
@@ -47,18 +96,21 @@ params:
     subtitle: "Will navigate autonomously for food."
     content: "Applications Engineer at Analog Devices specializing in MEMS-based Inertial Measurement Units (IMUs). I work directly with customers to help them integrate and debug inertial sensors."
     image: /images/profile.jpg
+    roundImage: true
     bottomImage:
       enable: false
     button:
       enable: true
-      name: "Resume"
-      url: "#"
+      name: "View Blog"
+      url: "/blogs"
       download: false
       newPage: false
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
           url: https://github.com/juchong
+        - icon: fab fa-linkedin
+          url: https://linkedin.com/in/juanjchong
         - icon: fab fa-twitter
           url: https://twitter.com/juanjchong
         - icon: fab fa-instagram
@@ -69,19 +121,21 @@ params:
     title: "About Me"
     image: "/images/31052400_10106594171569278_5735696771019964416_o.jpg"
     content: |-
-      My name is Juan Jose Chong, and I currently work at Analog Devices as an Applications Engineer with a focus on MEMS-based Inertial Measurement Units (IMUs). In this role, I work directly with customers to help them integrate and debug any mechanical or electrical concerns they may run into when using inertial sensors. My previous role as a Senior Product Engineer in the inertial sensing group allowed me to become an expert in calibrating, testing and implementing high-performance inertial measurement units (IMUs).
+      My name is Juan Jose Chong, and I currently work at [Analog Devices](https://www.analog.com) as an Applications Engineer with a focus on MEMS-based Inertial Measurement Units (IMUs). In this role, I work directly with customers to help them integrate and debug any mechanical or electrical concerns they may run into when using inertial sensors.
 
-      In my free time, I volunteer with FIRST robotics by volunteering as a FIRST Technical Advisor (FTA) at events across the country (and sometimes internationally). I also work with a local robotics team FRC 900, The Zebracorns where possible to help develop ROS-based robot code.
+      My previous role as a Senior Product Engineer in the inertial sensing group allowed me to become an expert in calibrating, testing, and implementing high-performance inertial measurement units (IMUs).
+
+      In my free time, I volunteer with FIRST robotics as a FIRST Technical Advisor (FTA) at events across the country (and sometimes internationally). I also work with a local robotics team [FRC 900, The Zebracorns](https://team900.org/) to help develop ROS-based robot code.
     skills:
       enable: true
       title: "Areas of expertise:"
       items:
         - "MEMS Inertial Sensors"
-        - "Inertial Measurement Units (IMUs)"
-        - "Robotics"
-        - "ROS Development"
+        - "Inertial Measurement Units"
+        - "Robotics & ROS"
         - "Hardware Debugging"
         - "Embedded Systems"
+        - "Python & C++"
 
   experience:
     enable: false
@@ -93,14 +147,51 @@ params:
     enable: false
 
   projects:
-    enable: false
+    enable: true
+    title: "Projects & Research"
+    items:
+      - title: N64 JTAG Research
+        content: Reverse engineering the Nintendo 64's JTAG debug interface to improve TAS (Tool-Assisted Speedrun) reliability on original hardware.
+        image: /images/n64/N64_JTAG_JuanC_RevA.JPG
+        featured:
+          name: Read More
+          link: /blogs/n64-tas-research/
+        badges:
+          - "Hardware Hacking"
+          - "JTAG"
+          - "Reverse Engineering"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/juchong/openocd_n64
+
+      - title: 80W Laser Cutter Setup
+        content: Documentation of setting up and modifying a Chinese 80W CO2 laser cutter, including air assist solenoid integration and exhaust system design.
+        image: /images/laser-cutter-tweaks-review/IMG_4744.jpg
+        featured:
+          name: Read More
+          link: /blogs/laser-cutter-tweaks-review/
+        badges:
+          - "Fabrication"
+          - "Hardware"
+          - "Documentation"
+
+      - title: Home Assistant on Raspberry Pi
+        content: Guide for installing Home Assistant with Docker and log2ram to reduce SD card wear on Raspberry Pi systems.
+        image: /images/chongflix_logo.jpg
+        featured:
+          name: Read More
+          link: /blogs/hassio-raspbian-log2ram/
+        badges:
+          - "Home Automation"
+          - "Docker"
+          - "Linux"
 
   contact:
     enable: true
-    title: "Contact Me"
-    content: "Feel free to reach out!"
-    email: "juan@highcurrent.io"
+    title: "Get In Touch"
+    content: "Have a question about inertial sensors, robotics, or one of my projects? My inbox is always open!"
     btnName: "Email Me"
+    btnLink: "mailto:juan@highcurrent.io"
 
   footer:
     recentPosts:
@@ -111,6 +202,7 @@ params:
       disableFeaturedImage: false
     socialNetworks:
       github: https://github.com/juchong
+      linkedin: https://linkedin.com/in/juanjchong
       twitter: https://twitter.com/juanjchong
       instagram: https://instagram.com/juanjchong
 
@@ -118,11 +210,14 @@ params:
     disableFeaturedImage: false
 
   singlePages:
+    socialShare: true
     readTime:
       enable: true
       content: "min read"
     scrollprogress:
       enable: true
+    tags:
+      openInNewTab: true
 
   terms:
     read: "Read"
@@ -131,19 +226,7 @@ params:
     pageNotFound: "Page not found"
     emailText: "Check out this site"
 
-  d498tele498telerik:
-    highlight:
-      noClasses: false
-
-menu:
-  main:
-    - identifier: blog
-      name: Blog
-      title: Blog posts
-      url: /blogs
-      weight: 1
-    - identifier: about
-      name: About
-      title: About
-      url: /#about
-      weight: 2
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
