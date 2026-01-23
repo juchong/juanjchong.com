@@ -1,12 +1,13 @@
 ---
 title: "Installing hass.io (Home Assistant + Supervisor) on Raspbian with log2ram"
 date: 2020-10-15T15:34:30-04:00
-categories:
-  - blog
+draft: false
 tags:
   - RPi
   - Linux
   - Home Assistant
+categories:
+  - Blog
 ---
 
 SD card wear caused by running Home Assistant on a Raspberry Pi seems to be a very commonly-debated topic on the Home Assistant forums. I've personally lost more than one SD card to excessive reads and writes, ultimately leading to system failure. To help mitigate the issue, I switched over to pushing log data to a remote database but found that Home Assistant becomes very unstable if the remote server becomes unavailable. This article documents the process of setting up a Raspberry Pi, Docker, log2ram, and Home Assistant (hass.io).
@@ -34,7 +35,7 @@ Once you've connected to the Pi (the default login information is: U:pi P:raspbe
 
 Once the Pi reboots, enter the following command to update the OS. 
 
-```
+```bash
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
 ```
 
@@ -44,7 +45,7 @@ Installing Docker is very straightforward. Enter the following commands in the o
 
 ### Install Docker
 
-```
+```bash
 curl -sSL https://get.docker.com | sh
 ```
 
@@ -52,7 +53,7 @@ curl -sSL https://get.docker.com | sh
 
 This command is necessary for the "pi" user to interface with docker containers. 
 
-```
+```bash
 sudo usermod -aG docker pi
 ```
 
@@ -60,7 +61,7 @@ After executing this command, **reboot the Pi**.
 
 ### Test the Docker installation
 
-```
+```bash
 docker run hello-world
 ```
 
@@ -68,14 +69,14 @@ If this command shows you a "hello world" message, then docker should be working
 
 **Install Docker dependencies**
 
-```
+```bash
 sudo apt-get install -y libffi-dev libssl-dev
 sudo apt-get install -y python3 python3-pip
 ```
 
 These dependencies are only required for Docker to run. I also use docker-compose to manage other containers outside of hass.io, so executing the command below will install docker-compose.
 
-```
+```bash
 sudo pip3 -v install docker-compose
 ```
 
@@ -89,7 +90,7 @@ The Home Assistant development team provides an install script for setting up th
 
 A few dependencies need to be installed, and a service needs to be disabled before you can run the script. Execute the commands below to get things set up.
 
-```
+```bash
 sudo -i
 
 apt-get install -y software-properties-common apparmor-utils apt-transport-https avahi-daemon ca-certificates curl dbus jq network-manager
@@ -101,7 +102,7 @@ systemctl stop ModemManager
 
 Once everything is installed and configured, issue the command below, substituting `MY_MACHINE` with your Raspberry Pi model (supported machine types shown below).
 
-```
+```bash
 curl -sL https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh | bash -s -- -m MY_MACHINE
 ```
 
@@ -116,7 +117,7 @@ raspberrypi4
 
 Home Assistant (hass.io) should be available a few minutes after the script is finished. Use the command below to watch the Docker container start up. You can exit the log monitor by pressing Ctrl + C.
 
-```
+```bash
 docker logs hassio_supervisor -f
 ```
 
@@ -140,7 +141,7 @@ We need to modify a few configuration files and create a symlink before hass.io 
 
 Navigate to `/usr/share/hassio/homeassistant` and create a new directory for your logs (`sudo` is required for all of these commands). 
 
-``` 
+```bash
 sudo mkdir logs
 ```
 
@@ -155,7 +156,7 @@ Once you've saved and closed the file, navigate to `Configuration > General > Se
 
 Move the database and log files into the `logs/` directory.
 
-```
+```bash
 cd /usr/share/hassio/homeassistant/
 sudo mv home-assistant.log logs/
 sudo mv home-assistant_v2.db logs/
@@ -163,14 +164,14 @@ sudo mv home-assistant_v2.db logs/
 
 Create a symlink to the Home Assistant log file using the command below.
 
-```
+```bash
 cd /usr/share/hassio/homeassistant/
 sudo ln -s logs/home-assistant.log home-assistant.log
 ```
 
 Start log2ram to have it initialize the directories. 
 
-```
+```bash
 sudo log2ram start
 ```
 
@@ -188,4 +189,4 @@ log2ram.log
 
 ## Conclusion
 
-That's it! Once you reboot your Pi, your logs should now be written to RAM and periodically backed up to the SD card! 
+That's it! Once you reboot your Pi, your logs should now be written to RAM and periodically backed up to the SD card!

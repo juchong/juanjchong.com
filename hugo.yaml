@@ -1,0 +1,149 @@
+baseURL: "https://juanjchong.com"
+languageCode: "en-us"
+title: "Juan's Blog"
+theme: hugo-profile
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+pagination:
+  pagerSize: 5
+
+enableRobotsTXT: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  title: "Juan's Blog"
+  description: "Measure the planet! The personal website of Juan Chong, an Applications Engineer at Analog Devices specializing in IMUs, MEMS inertial sensors, and robotics."
+  favicon: "/images/profile.jpg"
+  
+  useBootstrapCDN: false
+  animate: true
+
+  theme:
+    defaultTheme: "light"
+    disableThemeToggle: false
+
+  font:
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
+    textAlign: left
+
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Juan Chong."
+    subtitle: "Will navigate autonomously for food."
+    content: "Applications Engineer at Analog Devices specializing in MEMS-based Inertial Measurement Units (IMUs). I work directly with customers to help them integrate and debug inertial sensors."
+    image: /images/profile.jpg
+    bottomImage:
+      enable: false
+    button:
+      enable: true
+      name: "Resume"
+      url: "#"
+      download: false
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/juchong
+        - icon: fab fa-twitter
+          url: https://twitter.com/juanjchong
+        - icon: fab fa-instagram
+          url: https://instagram.com/juanjchong
+
+  about:
+    enable: true
+    title: "About Me"
+    image: "/images/31052400_10106594171569278_5735696771019964416_o.jpg"
+    content: |-
+      My name is Juan Jose Chong, and I currently work at Analog Devices as an Applications Engineer with a focus on MEMS-based Inertial Measurement Units (IMUs). In this role, I work directly with customers to help them integrate and debug any mechanical or electrical concerns they may run into when using inertial sensors. My previous role as a Senior Product Engineer in the inertial sensing group allowed me to become an expert in calibrating, testing and implementing high-performance inertial measurement units (IMUs).
+
+      In my free time, I volunteer with FIRST robotics by volunteering as a FIRST Technical Advisor (FTA) at events across the country (and sometimes internationally). I also work with a local robotics team FRC 900, The Zebracorns where possible to help develop ROS-based robot code.
+    skills:
+      enable: true
+      title: "Areas of expertise:"
+      items:
+        - "MEMS Inertial Sensors"
+        - "Inertial Measurement Units (IMUs)"
+        - "Robotics"
+        - "ROS Development"
+        - "Hardware Debugging"
+        - "Embedded Systems"
+
+  experience:
+    enable: false
+
+  education:
+    enable: false
+
+  achievements:
+    enable: false
+
+  projects:
+    enable: false
+
+  contact:
+    enable: true
+    title: "Contact Me"
+    content: "Feel free to reach out!"
+    email: "juan@highcurrent.io"
+    btnName: "Email Me"
+
+  footer:
+    recentPosts:
+      path: "blogs"
+      count: 3
+      title: "Recent Posts"
+      enable: true
+      disableFeaturedImage: false
+    socialNetworks:
+      github: https://github.com/juchong
+      twitter: https://twitter.com/juanjchong
+      instagram: https://instagram.com/juanjchong
+
+  listPages:
+    disableFeaturedImage: false
+
+  singlePages:
+    readTime:
+      enable: true
+      content: "min read"
+    scrollprogress:
+      enable: true
+
+  terms:
+    read: "Read"
+    toc: "Table of Contents"
+    copyright: "All rights reserved"
+    pageNotFound: "Page not found"
+    emailText: "Check out this site"
+
+  d498tele498telerik:
+    highlight:
+      noClasses: false
+
+menu:
+  main:
+    - identifier: blog
+      name: Blog
+      title: Blog posts
+      url: /blogs
+      weight: 1
+    - identifier: about
+      name: About
+      title: About
+      url: /#about
+      weight: 2
