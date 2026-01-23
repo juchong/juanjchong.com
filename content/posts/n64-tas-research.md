@@ -1,14 +1,11 @@
----
-title: "N64 TAS (Tool-Assisted) Speedrun Research"
-date: 2021-02-21T23:28:30-04:00
-draft: false
-image: /images/n64/21-02-21 23-31-33 7169-min.jpg
-tags:
-  - Projects
-  - Consoles
-categories:
-  - Blog
----
++++
+title = "N64 TAS (Tool-Assisted) Speedrun Research"
+date = "2021-02-21"
+author = "Juan Chong"
+cover = "/images/n64/21-02-21 23-31-33 7169-min.jpg"
+tags = ["Projects", "Consoles", "Hardware Hacking", "JTAG"]
+description = "Reverse engineering the Nintendo 64 JTAG debug interface"
++++
 
 For several years I've watched the speedrunning community participate in a bi-yearly event called [Games Done Quick](https://gamesdonequick.com/). This showcase/telethon works to collect as many donations as possible during a week-long videogame speedrunning marathon. One segment that caught my eye was the [Tool-Assisted Speedruns (TAS)](http://tasvideos.org/). These speedruns focus on "scripting" a series of button presses in an emulated environment (an emulator) to beat (and sometimes break) video games. A further extension of this subset of the speedrunning community involves replaying" pre-programmed scripts (thus the "tool" portion) on real hardware. I've been putting off reaching out to the community for a few years, but I finally decided to reach out this year. What follows are my observations, learnings, and other notes from working to improve TAS reliability on the N64 console.
 

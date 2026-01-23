@@ -1,14 +1,11 @@
----
-title: "Testing and Tuning an 80W Laser Cutter from Amazon"
-date: 2020-07-06T15:34:30-04:00
-draft: false
-image: /images/laser-cutter-tweaks-review/IMG_4744.jpg
-tags:
-  - Laser
-  - Tools
-categories:
-  - Blog
----
++++
+title = "Testing and Tuning an 80W Laser Cutter from Amazon"
+date = "2020-07-06"
+author = "Juan Chong"
+cover = "/images/laser-cutter-tweaks-review/IMG_4744.jpg"
+tags = ["Laser", "Tools", "Hardware"]
+description = "Setting up and modifying a Chinese 80W CO2 laser cutter"
++++
 
 Amidst the COVID crisis, I decided to purchase a laser cutter to aid in manufacturing face shields and eventually speed up FRC prototyping (at least that's how I justified it to myself, anyway). At the time, many well-known laser brands were either out of stock or outside of my target budget, so I decided to take a risk on a laser purchased through Amazon. The [listing](https://www.amazon.com/Orion-Motor-Tech-Engraving-Compatible/dp/B088FPQ8GT) advertised this model as 80W and showed that I could have it shipped to my home in about two weeks.
 

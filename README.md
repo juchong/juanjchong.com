@@ -1,6 +1,6 @@
 # juanjchong.com
 
-A personal portfolio and blog built with [Hugo](https://gohugo.io/) using the [Hugo Profile](https://github.com/gurusabarish/hugo-profile) theme.
+A personal blog built with [Hugo](https://gohugo.io/) using the [Terminal](https://github.com/panr/hugo-theme-terminal) theme.
 
 ## Requirements
 
@@ -10,21 +10,16 @@ A personal portfolio and blog built with [Hugo](https://gohugo.io/) using the [H
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/juchong/juanjchong.com.git
+   git clone --recurse-submodules https://github.com/juchong/juanjchong.com.git
    cd juanjchong.com
    ```
 
-2. Add the Hugo Profile theme as a submodule:
+2. Start the development server:
    ```bash
-   git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
+   hugo server -t terminal
    ```
 
-3. Start the development server:
-   ```bash
-   hugo server
-   ```
-
-4. Open http://localhost:1313 in your browser.
+3. Open http://localhost:1313 in your browser.
 
 ## Deployment
 
@@ -38,6 +33,7 @@ The generated site will be in the `public/` directory.
 ## Structure
 
 - `hugo.yaml` - Site configuration
-- `content/blogs/` - Blog posts
+- `content/posts/` - Blog posts
+- `content/about.md` - About page
 - `static/images/` - Images and media
-- `themes/hugo-profile/` - Hugo Profile theme (git submodule)
+- `themes/terminal/` - Terminal theme (git submodule)

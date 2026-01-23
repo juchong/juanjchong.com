@@ -1,14 +1,10 @@
----
-title: "Making Ubuntu Usable on a Dell Latitude 7280"
-date: 2021-05-12T21:34:31-04:00
-draft: false
-tags:
-  - Projects
-  - Linux
-  - Guides
-categories:
-  - Blog
----
++++
+title = "Making Ubuntu Usable on a Dell Latitude 7280"
+date = "2021-05-12"
+author = "Juan Chong"
+tags = ["Projects", "Linux", "Guides"]
+description = "Fixing standby and WiFi issues on Dell Latitude 7280"
++++
 
 I've been using a Dell Latitude 7280 as my x86-based daily-driver for about a year. It's an excellent laptop for software development and hardware debugging in Windows, but requires some special attention when setting up Linux. 
 

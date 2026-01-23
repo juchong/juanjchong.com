@@ -1,14 +1,10 @@
----
-title: "Installing hass.io (Home Assistant + Supervisor) on Raspbian with log2ram"
-date: 2020-10-15T15:34:30-04:00
-draft: false
-tags:
-  - RPi
-  - Linux
-  - Home Assistant
-categories:
-  - Blog
----
++++
+title = "Installing hass.io (Home Assistant + Supervisor) on Raspbian with log2ram"
+date = "2020-10-15"
+author = "Juan Chong"
+tags = ["RPi", "Linux", "Home Assistant", "Docker"]
+description = "Reduce SD card wear by running Home Assistant with log2ram"
++++
 
 SD card wear caused by running Home Assistant on a Raspberry Pi seems to be a very commonly-debated topic on the Home Assistant forums. I've personally lost more than one SD card to excessive reads and writes, ultimately leading to system failure. To help mitigate the issue, I switched over to pushing log data to a remote database but found that Home Assistant becomes very unstable if the remote server becomes unavailable. This article documents the process of setting up a Raspberry Pi, Docker, log2ram, and Home Assistant (hass.io).
 
