@@ -12,14 +12,14 @@ SD card wear caused by running Home Assistant on a Raspberry Pi seems to be a ve
 
 ### Installing Raspberry-Pi-OS
 
-The Raspberry Pi foundation documentation does a good job describing how to flash an image to the SD card and get your Pi up-and-running. You can find the official guide [here](https://www.raspberrypi.org/documentation/installation/installing-images/). You'll want to use the "Raspberry Pi OS (32-bit) Lite" image for this application [link](https://www.raspberrypi.org/downloads/raspberry-pi-os/). 
+The Raspberry Pi foundation documentation does a good job describing how to flash an image to the SD card and get your Pi up-and-running. You can find the official guide [here](https://www.raspberrypi.com/documentation/computers/getting-started.html). You'll want to use the "Raspberry Pi OS Lite" image for this application [link](https://www.raspberrypi.com/software/operating-systems/). 
 
 I also recommend enabling ssh on your Raspberry Pi before booting it for the first time. You can do this by creating an empty file in the `BOOT`folder on your SD card. 
 
 - Windows Users: Create a .txt file in the `BOOT` directory on your SD card and rename it to `ssh` <u>without an extension</u>. You may have to change your folder settings to show extensions on known filetypes [link](https://www.howtohaven.com/system/show-file-extensions-in-windows-explorer.shtml).
 - Linux Users: You can either do something similar to what I mentioned for Windows users, or if you're handy with the terminal you can navigate to the `BOOT`directory and type: `touch ssh` 
 
-The Raspberry Pi foundation also has a tutorial on configuring the Raspberry Pi for headless operation [link](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
+The Raspberry Pi foundation also has a tutorial on configuring the Raspberry Pi for headless operation [link](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
 
 ### Configuring Raspberry-Pi-OS
 
@@ -109,7 +109,7 @@ raspberrypi3
 raspberrypi4
 ```
 
-**Note: The script supports 64-bit installations, but Raspberry-Pi-OS is a 32-bit OS!**
+**Note: Raspberry Pi OS now defaults to 64-bit on Pi 4 and newer. Use the appropriate machine type for your setup.**
 
 Home Assistant (hass.io) should be available a few minutes after the script is finished. Use the command below to watch the Docker container start up. You can exit the log monitor by pressing Ctrl + C.
 
@@ -119,7 +119,7 @@ docker logs hassio_supervisor -f
 
 ## Installing and Configuring log2ram
 
-log2ram creates a mount point in RAM where applications can write log data instead of writing directly to the SD card. Data logged in RAM is then periodically copied to the SD card on a predetermined schedule. The log2ram [project](https://github.com/azlux/log2ram) is hosted on GitHub and has a list of commands needed to install it. Once you've rebooted your Pi, edit the log2ram configuration file located at `etc/log2ram.conf`
+log2ram creates a mount point in RAM where applications can write log data instead of writing directly to the SD card. Data logged in RAM is then periodically copied to the SD card on a predetermined schedule. The log2ram [project](https://github.com/azlux/log2ram) is hosted on GitHub and has a list of commands needed to install it. Once you've rebooted your Pi, edit the log2ram configuration file located at `/etc/log2ram.conf`
 
 I changed the default size and log location to what's shown below.
 

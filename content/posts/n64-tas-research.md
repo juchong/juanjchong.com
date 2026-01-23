@@ -2,12 +2,12 @@
 title = "N64 TAS (Tool-Assisted) Speedrun Research"
 date = "2021-02-21"
 author = "Juan Chong"
-cover = "/images/n64/21-02-21 23-31-33 7169-min.jpg"
+cover = "/images/n64/21-02-21_23-31-33_7169-min.jpg"
 tags = ["Projects", "Consoles", "Hardware Hacking", "JTAG"]
 description = "Reverse engineering the Nintendo 64 JTAG debug interface"
 +++
 
-For several years I've watched the speedrunning community participate in a bi-yearly event called [Games Done Quick](https://gamesdonequick.com/). This showcase/telethon works to collect as many donations as possible during a week-long videogame speedrunning marathon. One segment that caught my eye was the [Tool-Assisted Speedruns (TAS)](http://tasvideos.org/). These speedruns focus on "scripting" a series of button presses in an emulated environment (an emulator) to beat (and sometimes break) video games. A further extension of this subset of the speedrunning community involves replaying" pre-programmed scripts (thus the "tool" portion) on real hardware. I've been putting off reaching out to the community for a few years, but I finally decided to reach out this year. What follows are my observations, learnings, and other notes from working to improve TAS reliability on the N64 console.
+For several years I've watched the speedrunning community participate in a bi-yearly event called [Games Done Quick](https://gamesdonequick.com/). This showcase/telethon works to collect as many donations as possible during a week-long videogame speedrunning marathon. One segment that caught my eye was the [Tool-Assisted Speedruns (TAS)](https://tasvideos.org/). These speedruns focus on "scripting" a series of button presses in an emulated environment (an emulator) to beat (and sometimes break) video games. A further extension of this subset of the speedrunning community involves replaying pre-programmed scripts (thus the "tool" portion) on real hardware. I've been putting off reaching out to the community for a few years, but I finally decided to reach out this year. What follows are my observations, learnings, and other notes from working to improve TAS reliability on the N64 console.
 
 ## 03/10/2021
 
@@ -35,7 +35,7 @@ My first move was to figure out whether the JTAG port worked out of the box. Las
 
 After staring at the N64 schematic [link](https://console5.com/techwiki/images/a/a2/N64_NUS-CPU-03.pdf) for a bit, I realized that the ColdReset pin on the CPU (Pin 110) is also connected to the Reality Coprocessor (RCP), presumably to allow the coprocessor to trigger a soft reset of the CPU. I theorized that the RCP might be using that pin to detect when the CPU is reset (think of it as if it were acting as a watchdog), so I decided to sever the connection after the N64 booted using a simple switch and a pull-up resistor. 
 
-![Switch to Disable ColdReset](/images/n64/21-03-07 00-53-16 7292.jpg)
+![Switch to Disable ColdReset](/images/n64/21-03-07_00-53-16_7292.jpg)
 
 This test produced interesting results since it proved that the RCP was happy to continue operating (drawing the same frame) even though the CPU was no longer sending it any data. 
 
@@ -52,7 +52,7 @@ After taking a few days to reflect on what I had learned, I still couldn't shake
 
 Using the image above as a starting point, I quickly calculated that a simple non-inverting OpAmp circuit with a gain of 15 should be enough to boost the weakened signal to something usable by external hardware. I set to work dead-bugging the circuit, and after some soldering, ended up with the circuit shown in the images below. 
 
-![Dead-Bugged OpAmp Circuit](/images/n64/21-03-07 00-53-08 7291.jpg)
+![Dead-Bugged OpAmp Circuit](/images/n64/21-03-07_00-53-08_7291.jpg)
 
 Once I verified that things looked good with a test signal, I turned on the N64 and discovered this:
 
@@ -65,7 +65,7 @@ Another member of the TASbot community pointed me to a [website](https://ultra64
 ## 02/22/2021
 
 Today was spent trying to wrap my head around the many aspects, headaches, and limitations of replaying TASs on the N64 console. N64 console emulation has not matured to a point where the emulator reliably mimics the Reality Signal Processor (RSP), leading to many "de-syncs." Very few games can be replayed reliably (Super Mario 64, MarioKart 64) on actual N64 hardware. 
-I spent most of today chasing down "red herrings" and probing around the digital video signals, exposed the JTAG lines onto pins, and probed a few unused pins available on the N64 CPU. Additional information on the digital signals and protocol used for generating analog RGB signals can be found [here](http://members.optusnet.com.au/eviltim/n64rgb/n64rgb.html). Information about the N64 CPU can be found [here](http://en64.shoutwiki.com/wiki/N64_CPU). The table below seemed very interesting when paired with the N64 schematic (shown below). I specifically wanted to know whether the "unused" signals worked on the customized NEC CPU. 
+I spent most of today chasing down "red herrings" and probing around the digital video signals, exposed the JTAG lines onto pins, and probed a few unused pins available on the N64 CPU. Additional information on the digital signals and protocol used for generating analog RGB signals can be found [here](https://etim.net.au/n64rgb/) (mirror of the original EvilTim guide). Information about the N64 CPU can be found [here](http://en64.shoutwiki.com/wiki/N64_CPU). The table below seemed very interesting when paired with the N64 schematic (shown below). I specifically wanted to know whether the "unused" signals worked on the customized NEC CPU. 
 
 ![N64 CPU Table](/images/n64/nes_cpu_table.png)
 
@@ -87,8 +87,8 @@ Finally, this image shows the same signals recorded in Donkey Kong 64 while rota
 
 Here are a few pictures of the N64's current state now that I've added test points. 
 
-![N64 Motherboard](/images/n64/21-02-21 23-31-33 7169-min.jpg)
+![N64 Motherboard](/images/n64/21-02-21_23-31-33_7169-min.jpg)
 
-![N64 Video Processing Test Points](/images/n64/21-02-21 23-31-39 7170-min.jpg)
+![N64 Video Processing Test Points](/images/n64/21-02-21_23-31-39_7170-min.jpg)
 
-![N64 JTAG and Other Test Points](/images/n64/21-02-21 23-31-46 7171-min.jpg)
+![N64 JTAG and Other Test Points](/images/n64/21-02-21_23-31-46_7171-min.jpg)
