@@ -1,0 +1,131 @@
+# Content for the /links page. Add, remove, or reorder entries here — the
+# layout adapts to however many links and projects are listed.
+
+profile:
+  name: "Juan Chong"
+  prompt: "juan@chong ~$ ls -l"
+  tagline: "Applications engineer working on MEMS inertial sensors. FIRST robotics volunteer, hardware tinkerer, and occasional console hacker."
+  avatar: "/images/profile.jpg"
+
+links:
+  - label: "QuestNav"
+    url: "https://questnav.gg/"
+    note: "Meta Quest pose streaming for FRC robots"
+    icon: "cpu"
+  - label: "GitHub"
+    url: "https://github.com/juchong"
+    note: "Firmware, drivers, and half-finished experiments"
+    icon: "github"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/juchong/"
+    note: "Work history and the professional version of me"
+    icon: "linkedin"
+  - label: "Twitter / X"
+    url: "https://twitter.com/juanjchong"
+    note: "@juanjchong"
+    icon: "x"
+  - label: "Bluesky"
+    url: "https://bsky.app/profile/juanjchong.bsky.social"
+    note: "@juanjchong.bsky.social"
+    icon: "bluesky"
+  - label: "Email"
+    url: "mailto:juan@highcurrent.io"
+    note: "juan@highcurrent.io"
+    icon: "mail"
+  - label: "Posts"
+    url: "/posts"
+    note: "Write-ups, guides, and build logs"
+    icon: "terminal"
+  - label: "About"
+    url: "/about"
+    note: "Longer introduction"
+    icon: "user"
+
+projectsTitle: "Projects"
+projectsIntro: "A few things I've built, broken, or documented."
+
+projects:
+  - name: "QuestNav"
+    status: "Active"
+    tagline: "Turns a Meta Quest headset into a field localization sensor for FRC robots, streaming pose over NetworkTables."
+    url: "https://questnav.gg/"
+    image: "/images/questnav/QuestNavLogo-Dark.svg"
+    imageFit: "contain"
+    tags: ["FRC", "Unity", "Localization", "C#"]
+    expanded: true
+    details:
+      - "Uses the headset's visual-inertial odometry — cameras plus the built-in IMU — to track position in 3D space, then publishes pose to the robot over NT4 across a wired Ethernet link."
+      - "Ships as a Unity app for the Quest plus a Java vendor dependency that feeds latency-compensated measurements into a swerve pose estimator."
+      - "MIT licensed and actively released, with setup guides and API docs at questnav.gg."
+    actions:
+      - label: "questnav.gg"
+        url: "https://questnav.gg/"
+        icon: "link"
+      - label: "Source"
+        url: "https://github.com/QuestNav/QuestNav"
+        icon: "github"
+
+  - name: "N64 TAS Research"
+    status: "Ongoing"
+    tagline: "Reverse engineering the Nintendo 64 JTAG debug interface to make tool-assisted speedruns repeatable on real hardware."
+    url: "/posts/n64-tas-research/"
+    image: "/images/n64/21-02-21_23-31-33_7169-min.jpg"
+    tags: ["Hardware Hacking", "JTAG", "Consoles"]
+    details:
+      - "Probing the console's debug pins to understand how the CPU and RCP can be halted and inspected."
+      - "Working with the TAS community to track down sources of desync between emulated and real runs."
+    actions:
+      - label: "Read the notes"
+        url: "/posts/n64-tas-research/"
+        icon: "book"
+
+  - name: "80W CO2 Laser Cutter Teardown"
+    status: "Complete"
+    tagline: "Testing, tuning, and modifying an inexpensive Chinese laser cutter bought during the 2020 face shield scramble."
+    url: "/posts/laser-cutter-tweaks-review/"
+    image: "/images/laser-cutter-tweaks-review/IMG_4744.jpg"
+    tags: ["Laser", "Tools", "Hardware"]
+    details:
+      - "Measured actual tube output against the advertised rating."
+      - "Documented the electrical and mechanical fixes needed before the machine was trustworthy."
+    actions:
+      - label: "Read the review"
+        url: "/posts/laser-cutter-tweaks-review/"
+        icon: "book"
+
+  - name: "Home Assistant on Raspbian + log2ram"
+    status: "Guide"
+    tagline: "A Docker-based Home Assistant install that keeps chatty log writes off the SD card."
+    url: "/posts/hassio-raspbian-log2ram/"
+    tags: ["Home Assistant", "RPi", "Docker"]
+    details:
+      - "Runs the Supervisor stack on plain Raspberry Pi OS instead of the appliance image."
+      - "log2ram buffers logs in memory so a remote database outage can't take the instance down."
+    actions:
+      - label: "Read the guide"
+        url: "/posts/hassio-raspbian-log2ram/"
+        icon: "book"
+
+  - name: "Latitude 7280 Linux Fixes"
+    status: "Guide"
+    tagline: "Making Ubuntu genuinely usable on a Dell Latitude 7280 by fixing standby lock-ups and flaky WiFi."
+    url: "/posts/latitude-7280-ubuntu/"
+    tags: ["Linux", "Guides"]
+    details:
+      - "Kernel and firmware tweaks that stop the laptop from hanging when the screen blanks."
+    actions:
+      - label: "Read the guide"
+        url: "/posts/latitude-7280-ubuntu/"
+        icon: "book"
+
+  - name: "FRC 900 — The Zebracorns"
+    status: "Volunteer"
+    tagline: "Helping a local FIRST Robotics team develop ROS-based robot code, plus volunteering as a FIRST Technical Advisor at events."
+    url: "https://team900.org/"
+    tags: ["Robotics", "ROS", "FIRST"]
+    details:
+      - "Mentoring students through sensor integration, odometry, and autonomous routines."
+    actions:
+      - label: "team900.org"
+        url: "https://team900.org/"
+        icon: "link"

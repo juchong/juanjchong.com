@@ -1,0 +1,40 @@
+{{- /* Inline SVG icons for the /links page. Pass an icon name, e.g. {{ partial "link-icon.html" "github" }} */ -}}
+{{- $name := lower (. | default "link") -}}
+{{- $filled := false -}}
+{{- $body := "" -}}
+
+{{- if eq $name "github" -}}
+  {{- $body = `<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 4.44-2.09 4.44-4.66a4.7 4.7 0 0 0-1.29-3.23 4.35 4.35 0 0 0-.11-3.24s-1.24-.36-4.1 1.53a12.4 12.4 0 0 0-6.5 0C6.54.9 5.3 1.26 5.3 1.26a4.35 4.35 0 0 0-.11 3.24A4.7 4.7 0 0 0 3.9 7.73c0 2.55 1.3 4.29 4.44 4.64a3.37 3.37 0 0 0-.94 2.58V19"/>` -}}
+{{- else if eq $name "linkedin" -}}
+  {{- $body = `<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>` -}}
+{{- else if or (eq $name "x") (eq $name "twitter") -}}
+  {{- $filled = true -}}
+  {{- $body = `<path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.58-6.63 7.58H.49l8.6-9.83L0 1.15h7.59l5.44 7.2 5.87-7.2Z"/>` -}}
+{{- else if or (eq $name "bluesky") (eq $name "bsky") -}}
+  {{- $filled = true -}}
+  {{- $body = `<path d="M12 10.8C10.91 8.69 7.95 4.75 5.2 2.81 2.57.94 1.56 1.27.9 1.57.14 1.91 0 3.08 0 3.77c0 .69.38 5.65.62 6.48.82 2.73 3.72 3.66 6.39 3.36.13-.02.27-.04.41-.06-.14.03-.28.05-.41.06-3.91.58-7.39 2.01-2.83 7.08 5.01 5.19 6.87-1.11 7.82-4.31.95 3.2 2.05 9.27 7.73 4.31 4.27-4.31 1.17-6.5-2.74-7.08a8.4 8.4 0 0 1-.41-.06c.14.02.28.04.41.06 2.67.3 5.57-.63 6.39-3.36.24-.83.62-5.79.62-6.48 0-.69-.14-1.86-.9-2.2-.66-.3-1.67-.63-4.3 1.24C16.05 4.75 13.09 8.69 12 10.8Z"/>` -}}
+{{- else if eq $name "mail" -}}
+  {{- $body = `<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/>` -}}
+{{- else if eq $name "terminal" -}}
+  {{- $body = `<polyline points="4,17 10,11 4,5"/><line x1="12" y1="19" x2="20" y2="19"/>` -}}
+{{- else if eq $name "user" -}}
+  {{- $body = `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>` -}}
+{{- else if eq $name "book" -}}
+  {{- $body = `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>` -}}
+{{- else if eq $name "cpu" -}}
+  {{- $body = `<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>` -}}
+{{- else if eq $name "home" -}}
+  {{- $body = `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/>` -}}
+{{- else if eq $name "rss" -}}
+  {{- $body = `<path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>` -}}
+{{- else if eq $name "youtube" -}}
+  {{- $body = `<path d="M22.5 7.4a2.8 2.8 0 0 0-1.9-2C18.9 5 12 5 12 5s-6.9 0-8.6.4a2.8 2.8 0 0 0-1.9 2A29 29 0 0 0 1.1 12a29 29 0 0 0 .4 4.6 2.8 2.8 0 0 0 1.9 2C5.1 19 12 19 12 19s6.9 0 8.6-.4a2.8 2.8 0 0 0 1.9-2 29 29 0 0 0 .4-4.6 29 29 0 0 0-.4-4.6z"/><polygon points="9.8,15.1 15.6,12 9.8,8.9"/>` -}}
+{{- else -}}
+  {{- $body = `<path d="M15 7h3a5 5 0 0 1 0 10h-3"/><path d="M9 17H6a5 5 0 0 1 0-10h3"/><line x1="8" y1="12" x2="16" y2="12"/>` -}}
+{{- end -}}
+
+{{- if $filled -}}
+  <svg class="lt-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">{{ $body | safeHTML }}</svg>
+{{- else -}}
+  <svg class="lt-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{{ $body | safeHTML }}</svg>
+{{- end -}}

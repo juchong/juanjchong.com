@@ -29,5 +29,8 @@ In my free time, I volunteer with FIRST robotics as a **FIRST Technical Advisor 
 
 - **Email:** [juan@highcurrent.io](mailto:juan@highcurrent.io)
 - **GitHub:** [github.com/juchong](https://github.com/juchong)
+- **LinkedIn:** [linkedin.com/in/juchong](https://www.linkedin.com/in/juchong/)
 - **Twitter:** [@juanjchong](https://twitter.com/juanjchong)
-- **LinkedIn:** [linkedin.com/in/juanjchong](https://linkedin.com/in/juanjchong)
+- **Bluesky:** [@juanjchong.bsky.social](https://bsky.app/profile/juanjchong.bsky.social)
+
+Everything in one place on the [links page](/links).

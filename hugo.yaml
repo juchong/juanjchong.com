@@ -16,7 +16,7 @@ markup:
 
 params:
   contentTypeName: "posts"
-  showMenuItems: 2
+  showMenuItems: 3
   showLanguageSelector: false
   fullWidthTheme: false
   centerTheme: true
@@ -63,3 +63,7 @@ languages:
           name: "Posts"
           url: "/posts"
           weight: 2
+        - identifier: links
+          name: "Links"
+          url: "/links"
+          weight: 3

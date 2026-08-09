@@ -1,0 +1,101 @@
+{{ define "main" }}
+{{- $lt := .Site.Data.linktree -}}
+<div class="linktree">
+
+  {{- with $lt.profile }}
+  <header class="lt-profile">
+    {{- with .avatar }}
+    <div class="lt-avatar">
+      <img src="{{ . | absURL }}" alt="{{ $lt.profile.name | default $.Site.Title }}" width="112" height="112">
+    </div>
+    {{- end }}
+    {{- with .prompt }}<p class="lt-prompt">{{ . }}</p>{{ end }}
+    <h1 class="lt-name">{{ .name | default $.Site.Title }}</h1>
+    {{- with .tagline }}<p class="lt-tagline">{{ . | markdownify }}</p>{{ end }}
+  </header>
+  {{- end }}
+
+  {{- with .Content }}
+  <div class="lt-intro post-content">{{ . }}</div>
+  {{- end }}
+
+  {{- with $lt.links }}
+  <nav class="lt-links" aria-label="{{ $.Title }}">
+    {{- range . }}
+    {{- $external := hasPrefix .url "http" }}
+    <a class="lt-link" href="{{ .url }}"{{ if $external }} target="_blank" rel="me noopener"{{ end }}>
+      <span class="lt-link-icon">{{ partial "link-icon.html" .icon }}</span>
+      <span class="lt-link-text">
+        <span class="lt-link-label">{{ .label }}</span>
+        {{- with .note }}<span class="lt-link-note">{{ . }}</span>{{ end }}
+      </span>
+      <span class="lt-link-arrow" aria-hidden="true">{{ if $external }}↗{{ else }}→{{ end }}</span>
+    </a>
+    {{- end }}
+  </nav>
+  {{- end }}
+
+  {{- with $lt.projects }}
+  <section class="lt-projects">
+    <h2 class="lt-section-title">
+      {{ $lt.projectsTitle | default "Projects" }}
+      <span class="lt-count">{{ len . }}</span>
+    </h2>
+    {{- with $lt.projectsIntro }}<p class="lt-section-intro">{{ . | markdownify }}</p>{{ end }}
+
+    <div class="lt-grid">
+      {{- range . }}
+      {{- $p := . }}
+      {{- $external := and $p.url (hasPrefix $p.url "http") }}
+      {{- $target := cond (eq $external true) " target=\"_blank\" rel=\"noopener\"" "" }}
+      <article class="lt-card">
+        {{- with $p.image }}
+        {{- $mediaClass := cond (eq ($p.imageFit | default "cover") "contain") "lt-card-media lt-card-media--contain" "lt-card-media" }}
+        <a class="{{ $mediaClass }}" href="{{ $p.url | default "#" }}"{{ $target | safeHTMLAttr }} tabindex="-1" aria-hidden="true">
+          <img src="{{ . | absURL }}" alt="" loading="lazy">
+        </a>
+        {{- end }}
+        <div class="lt-card-body">
+          <h3 class="lt-card-title">
+            {{- if $p.url }}
+            <a href="{{ $p.url }}"{{ $target | safeHTMLAttr }}>{{ $p.name }}</a>
+            {{- else }}{{ $p.name }}{{ end }}
+            {{- with $p.status }}<span class="lt-status">{{ . }}</span>{{ end }}
+          </h3>
+          {{- with $p.tagline }}<p class="lt-card-tagline">{{ . | markdownify }}</p>{{ end }}
+
+          {{- with $p.tags }}
+          <p class="lt-tags">
+            {{- range . }}<span class="lt-tag">{{ . }}</span>{{ end }}
+          </p>
+          {{- end }}
+
+          {{- if or $p.details $p.actions }}
+          <details class="lt-details"{{ if $p.expanded }} open{{ end }}>
+            <summary>Details</summary>
+            {{- with $p.details }}
+            <ul>
+              {{- range . }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ul>
+            {{- end }}
+            {{- with $p.actions }}
+            <p class="lt-actions">
+              {{- range . }}
+              {{- $actionExternal := hasPrefix .url "http" }}
+              <a class="lt-action" href="{{ .url }}"{{ if $actionExternal }} target="_blank" rel="noopener"{{ end }}>
+                {{ partial "link-icon.html" .icon }}{{ .label }}
+              </a>
+              {{- end }}
+            </p>
+            {{- end }}
+          </details>
+          {{- end }}
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+</div>
+{{ end }}
