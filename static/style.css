@@ -157,6 +157,25 @@ hr {
   border-radius: 4px;
 }
 
+/* Portrait covers render at full container width otherwise, which costs a whole screen */
+.post-cover {
+  max-height: 520px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Video covers need the frame the theme only gives to images, and can run taller since
+   they only ever appear on the post itself */
+video.post-cover {
+  display: block;
+  max-width: 100%;
+  max-height: 680px;
+  border: 8px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 8px;
+}
+
 /* Reading time & post meta */
 .reading-time {
   color: var(--muted);

@@ -1,4 +1,4 @@
-# Content for the /links page. Add, remove, or reorder entries here — the
+# Content for the /links page. Add, remove, or reorder entries here. The
 # layout adapts to however many links and projects are listed.
 
 profile:
@@ -54,7 +54,7 @@ projects:
     tags: ["FRC", "Unity", "Localization", "C#"]
     expanded: true
     details:
-      - "Uses the headset's visual-inertial odometry — cameras plus the built-in IMU — to track position in 3D space, then publishes pose to the robot over NT4 across a wired Ethernet link."
+      - "Uses the headset's visual-inertial odometry, cameras plus the built-in IMU, to track position in 3D space, then publishes pose to the robot over NT4 across a wired Ethernet link."
       - "Ships as a Unity app for the Quest plus a Java vendor dependency that feeds latency-compensated measurements into a swerve pose estimator."
       - "MIT licensed and actively released, with setup guides and API docs at questnav.gg."
     actions:
@@ -63,6 +63,23 @@ projects:
         icon: "link"
       - label: "Source"
         url: "https://github.com/QuestNav/QuestNav"
+        icon: "github"
+
+  - name: "DC34 Badge Motion Sensing"
+    status: "Write-up"
+    tagline: "Uses the DEF CON 34 badge's existing accelerometer to work out whether its wearer is walking, standing, sitting, or not wearing it, and draws the answer on the idle screen."
+    url: "/posts/dc34-badge-motion-sensing/"
+    image: "/images/dc34-badge-motion-sensing/dc34-badge-motion-sensing.png"
+    tags: ["Embedded", "Rust", "Xous"]
+    details:
+      - "Records labelled motion off the badge, trains a decision tree on a laptop, and compiles it back into the firmware. Inference runs on a RISC-V core with no floating-point unit."
+      - "Adds a shared sampler and a CSV data logger, and fixes the interrupt configuration that let the screen blank while the badge was being worn."
+    actions:
+      - label: "Read the write-up"
+        url: "/posts/dc34-badge-motion-sensing/"
+        icon: "book"
+      - label: "dc34-console"
+        url: "https://github.com/juchong/dc34-console"
         icon: "github"
 
   - name: "N64 TAS Research"
@@ -118,7 +135,7 @@ projects:
         url: "/posts/latitude-7280-ubuntu/"
         icon: "book"
 
-  - name: "FRC 900 — The Zebracorns"
+  - name: "FRC 900, The Zebracorns"
     status: "Volunteer"
     tagline: "Helping a local FIRST Robotics team develop ROS-based robot code, plus volunteering as a FIRST Technical Advisor at events."
     url: "https://team900.org/"
