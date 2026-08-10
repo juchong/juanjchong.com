@@ -27,7 +27,7 @@ In my free time, I volunteer with FIRST robotics as a **FIRST Technical Advisor 
 
 ## Contact
 
-- **Email:** [juan@highcurrent.io](mailto:juan@highcurrent.io)
+- **Email:** [me@juanjchong.com](mailto:me@juanjchong.com)
 - **GitHub:** [github.com/juchong](https://github.com/juchong)
 - **LinkedIn:** [linkedin.com/in/juchong](https://www.linkedin.com/in/juchong/)
 - **Twitter:** [@juanjchong](https://twitter.com/juanjchong)

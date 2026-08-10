@@ -8,10 +8,6 @@ profile:
   avatar: "/images/profile.jpg"
 
 links:
-  - label: "QuestNav"
-    url: "https://questnav.gg/"
-    note: "Meta Quest pose streaming for FRC robots"
-    icon: "cpu"
   - label: "GitHub"
     url: "https://github.com/juchong"
     note: "Firmware, drivers, and half-finished experiments"
@@ -29,8 +25,8 @@ links:
     note: "@juanjchong.bsky.social"
     icon: "bluesky"
   - label: "Email"
-    url: "mailto:juan@highcurrent.io"
-    note: "juan@highcurrent.io"
+    url: "mailto:me@juanjchong.com"
+    note: "me@juanjchong.com"
     icon: "mail"
   - label: "Posts"
     url: "/posts"
@@ -45,6 +41,24 @@ projectsTitle: "Projects"
 projectsIntro: "A few things I've built, broken, or documented."
 
 projects:
+  - name: "DC34 Badge Motion Sensing"
+    status: "Write-up"
+    tagline: "Uses the DEF CON 34 badge's existing accelerometer to work out whether its wearer is walking, standing, sitting, or not wearing it, and draws the answer on the idle screen."
+    url: "/posts/dc34-badge-motion-sensing/"
+    image: "/images/dc34-badge-motion-sensing/dc34-badge-motion-sensing.png"
+    tags: ["Embedded", "Rust", "Xous"]
+    expanded: true
+    details:
+      - "Records labelled motion off the badge, trains a decision tree on a laptop, and compiles it back into the firmware. Inference runs on a RISC-V core with no floating-point unit."
+      - "Adds a shared sampler and a CSV data logger, and fixes the interrupt configuration that let the screen blank while the badge was being worn."
+    actions:
+      - label: "Read the write-up"
+        url: "/posts/dc34-badge-motion-sensing/"
+        icon: "book"
+      - label: "dc34-console"
+        url: "https://github.com/juchong/dc34-console"
+        icon: "github"
+
   - name: "QuestNav"
     status: "Active"
     tagline: "Turns a Meta Quest headset into a field localization sensor for FRC robots, streaming pose over NetworkTables."
@@ -52,7 +66,6 @@ projects:
     image: "/images/questnav/QuestNavLogo-Dark.svg"
     imageFit: "contain"
     tags: ["FRC", "Unity", "Localization", "C#"]
-    expanded: true
     details:
       - "Uses the headset's visual-inertial odometry, cameras plus the built-in IMU, to track position in 3D space, then publishes pose to the robot over NT4 across a wired Ethernet link."
       - "Ships as a Unity app for the Quest plus a Java vendor dependency that feeds latency-compensated measurements into a swerve pose estimator."
@@ -63,23 +76,6 @@ projects:
         icon: "link"
       - label: "Source"
         url: "https://github.com/QuestNav/QuestNav"
-        icon: "github"
-
-  - name: "DC34 Badge Motion Sensing"
-    status: "Write-up"
-    tagline: "Uses the DEF CON 34 badge's existing accelerometer to work out whether its wearer is walking, standing, sitting, or not wearing it, and draws the answer on the idle screen."
-    url: "/posts/dc34-badge-motion-sensing/"
-    image: "/images/dc34-badge-motion-sensing/dc34-badge-motion-sensing.png"
-    tags: ["Embedded", "Rust", "Xous"]
-    details:
-      - "Records labelled motion off the badge, trains a decision tree on a laptop, and compiles it back into the firmware. Inference runs on a RISC-V core with no floating-point unit."
-      - "Adds a shared sampler and a CSV data logger, and fixes the interrupt configuration that let the screen blank while the badge was being worn."
-    actions:
-      - label: "Read the write-up"
-        url: "/posts/dc34-badge-motion-sensing/"
-        icon: "book"
-      - label: "dc34-console"
-        url: "https://github.com/juchong/dc34-console"
         icon: "github"
 
   - name: "N64 TAS Research"
