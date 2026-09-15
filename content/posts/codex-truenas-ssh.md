@@ -4,7 +4,7 @@ date = "2026-09-15"
 author = "Juan Chong"
 tags = ["Guides", "TrueNAS", "Docker", "AI"]
 description = "Installing Codex in a TrueNAS user's home directory and connecting the desktop app to Docker Compose projects over SSH"
-draft = true
+draft = false
 Toc = true
 +++
 
